@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semana05DPAEFCoreSales.API", "Semana05DPAEFCoreSales.API\Semana05DPAEFCoreSales.API.csproj", "{C6A8BBFA-88D5-46BA-94B4-CF070B70027D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semana05DPAEFCoreSales.DOMAIN", "Semana05DPAEFCoreSales.DOMAIN\Semana05DPAEFCoreSales.DOMAIN.csproj", "{B4C736FB-0280-4A1D-A448-EA682F4E9105}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6A8BBFA-88D5-46BA-94B4-CF070B70027D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A8BBFA-88D5-46BA-94B4-CF070B70027D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A8BBFA-88D5-46BA-94B4-CF070B70027D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A8BBFA-88D5-46BA-94B4-CF070B70027D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C736FB-0280-4A1D-A448-EA682F4E9105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C736FB-0280-4A1D-A448-EA682F4E9105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C736FB-0280-4A1D-A448-EA682F4E9105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C736FB-0280-4A1D-A448-EA682F4E9105}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0ACD4ED2-D1B1-4ABF-A560-F75F98044458}
+	EndGlobalSection
+EndGlobal
