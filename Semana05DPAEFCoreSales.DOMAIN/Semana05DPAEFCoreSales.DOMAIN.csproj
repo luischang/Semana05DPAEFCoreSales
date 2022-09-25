@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Core\DTOs\" />
-    <Folder Include="Core\Interfaces\" />
     <Folder Include="Infrastructure\Data\" />
     <Folder Include="Infrastructure\Mapping\" />
   </ItemGroup>

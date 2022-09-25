@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Semana05DPAEFCoreSales.DOMAIN.Core.Entities;
+using Semana05DPAEFCoreSales.DOMAIN.Core.Interfaces;
 using Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Repositories
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly SalesDAWContext _context;
 

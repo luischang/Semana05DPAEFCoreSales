@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Semana05DPAEFCoreSales.DOMAIN.Core.Interfaces;
+using Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Data;
+using Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Get ConnectionString
+var connectionString = builder
+    .Configuration
+    .GetConnectionString("DevConnection");
+//Add dbContext
+builder
+    .Services
+    .AddDbContext<SalesDAWContext>
+    (options => options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 
 var app = builder.Build();
 
