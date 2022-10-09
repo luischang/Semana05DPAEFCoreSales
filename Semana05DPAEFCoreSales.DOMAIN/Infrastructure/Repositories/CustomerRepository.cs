@@ -64,5 +64,16 @@ namespace Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Repositories
 
         }
 
+        public async Task<Customer> GetCustomersWithOrders(int id)
+        {
+            var customer = await _context
+                                .Customer
+                                .Include(x=>x.Order)
+                                .Where(x => x.Id == id)
+                                .FirstOrDefaultAsync();
+
+            return customer;        
+        }
+
     }
 }

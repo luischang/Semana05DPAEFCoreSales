@@ -10,5 +10,6 @@ namespace Semana05DPAEFCoreSales.DOMAIN.Core.Interfaces
         Task<IEnumerable<Customer>> GetCustomers();
         Task<bool> Insert(Customer customer);
         Task<bool> Update(Customer customer);
+        Task<Customer> GetCustomersWithOrders(int id);
     }
 }

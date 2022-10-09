@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Semana05DPAEFCoreSales.DOMAIN.Core.DTOs;
 using Semana05DPAEFCoreSales.DOMAIN.Core.Entities;
 using Semana05DPAEFCoreSales.DOMAIN.Core.Interfaces;
 
@@ -10,17 +12,34 @@ namespace Semana05DPAEFCoreSales.API.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerRepository customerRepository)
+        public CustomerController(ICustomerRepository customerRepository, IMapper mapper)
         {
             _customerRepository = customerRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var customers = await _customerRepository.GetCustomers();
-            return Ok(customers);
+            //Convert customers to customerDTO
+            //var customerList = new List<CustomerDTO>();
+            //foreach (var item in customers)
+            //{
+            //    customerList.Add(new CustomerDTO
+            //    {
+            //        Id = item.Id,
+            //        FirstName = item.FirstName,
+            //        LastName = item.LastName,
+            //        City = item.City,
+            //        Country = item.Country,
+            //        Phone = item.Phone
+            //    });
+            //}
+            var customerList = _mapper.Map<List<CustomerCountryDTO>>(customers);
+            return Ok(customerList);
         }
 
         [HttpGet("{id}")]
@@ -38,28 +57,41 @@ namespace Semana05DPAEFCoreSales.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert([FromBody] Customer customer)
+        public async Task<IActionResult> Insert([FromBody] CustomerCreateDTO customerDTO)
         {
+            var customer = _mapper.Map<Customer>(customerDTO);
+
             var result = await _customerRepository.Insert(customer);
-            return Ok(result);
+            return Ok(new { response = result });
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Customer customer)
+        public async Task<IActionResult> Update(int id, [FromBody] CustomerDTO customerDTO)
         {
-            if (id != customer.Id)
+            if (id != customerDTO.Id)
                 return BadRequest();
 
+            var customer = _mapper.Map<Customer>(customerDTO);
+
             var result = await _customerRepository.Update(customer);
-            return Ok(result);
+            return Ok((new { response = result }));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) {
             var result = await _customerRepository.Delete(id);
-            return Ok(result);
+            return Ok((new { response = result }));
         }
 
+        [HttpGet("GetOrdersByCustomer/{id}")]
+        public async Task<IActionResult> GetOrdersByCustomer(int id)
+        {
+            var customer = await _customerRepository.GetCustomersWithOrders(id);
+            if (customer == null)
+                return NotFound();
 
+            var customerDTO = _mapper.Map<CustomerOrderDTO>(customer);
+            return Ok(customerDTO);
+        }
     }
 }
