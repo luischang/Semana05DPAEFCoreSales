@@ -27,6 +27,11 @@ builder
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddDefaultPolicy(policy =>
+        policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
+);
+
 //Add automapper
 var config = new MapperConfiguration(cfg =>
 {
@@ -43,7 +48,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();
