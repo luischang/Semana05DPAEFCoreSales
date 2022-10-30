@@ -25,6 +25,7 @@ builder
     (options => options.UseSqlServer(connectionString));
 
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 
 //Add automapper
 var config = new MapperConfiguration(cfg =>

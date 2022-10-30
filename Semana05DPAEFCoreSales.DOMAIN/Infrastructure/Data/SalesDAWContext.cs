@@ -22,6 +22,7 @@ namespace Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Data
         public virtual DbSet<OrderItem> OrderItem { get; set; } = null!;
         public virtual DbSet<Product> Product { get; set; } = null!;
         public virtual DbSet<Supplier> Supplier { get; set; } = null!;
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

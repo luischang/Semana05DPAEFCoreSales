@@ -28,6 +28,9 @@ namespace Semana05DPAEFCoreSales.DOMAIN.Infrastructure.Mapping
             CreateMap<Order, OrderNumberAmountDTO>();
             CreateMap<OrderNumberAmountDTO, Order>();
 
+            CreateMap<Users, UsersLoginResponseDTO>();
+            CreateMap<UsersLoginResponseDTO, Users>();
+
         }
 
 
